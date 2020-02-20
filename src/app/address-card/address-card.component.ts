@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-address-card',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddressCardComponent implements OnInit {
 	user: any;
-  constructor() {
+	@Input('name') userName: string; //@Input is only called after constructor is initialized.
+  constructor() { //constructor code
+  	// called when the selector is used.
+  	//doesnt initialize all fields.
+  }
+
+  ngOnInit(): void { //ngOnInit() is called after complete intialization of object is finished.
   	this.user = {
-		name: 'Niraj Khadka',
+		name: this.userName,
 		title: 'Software Developer',
 		address: 'Indrayani, Shankharapur-09, Kathmandu, Nepal',
 		phone:[
@@ -17,16 +23,7 @@ export class AddressCardComponent implements OnInit {
 			'977 9843059542',
 			'977 9808229804'
 		],
-		number:[
-			'2',
-			'3',
-			'4',
-			'5'
-		]
 	};
-  }
-
-  ngOnInit(): void {
   }
 
 }
