@@ -1,7 +1,8 @@
 <div class="address-card">
 	<h1 class="name">{{ user.name }}</h1>
 	<h3 class="title">{{ user.designation }}</h3>
-	<button (click)="toogleCollapse()"> Expand / Collapse</button>
+	<button *ngIf="isCollapsed" (click)="toogleCollapse()"> Expand +</button>
+	<button *ngIf="!isCollapsed" (click)="toogleCollapse()">Collapse -</button>
 	<div *ngIf="!isCollapsed">
 		<p class="address">{{ user.address }}</p>
 		<div class="phone" *ngIf="user.phone.length>0">
